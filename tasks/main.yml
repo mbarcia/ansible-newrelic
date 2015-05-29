@@ -20,6 +20,7 @@
     group: newrelic
     owner: root
     mode: 0640
+  sudo: yes
   notify:
     - Restart New Relic
   when: newrelic_loaded_os_family|default(False) != False
