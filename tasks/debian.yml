@@ -31,3 +31,13 @@
     state: latest
   notify:
     - Restart New Relic
+
+- name: Debian | Install New Relic PHP5 agent
+  apt:
+    pkg: newrelic-php5
+    update_cache: yes
+    cache_valid_time: 86400
+    state: latest
+  notify:
+    - Restart New Relic
+    

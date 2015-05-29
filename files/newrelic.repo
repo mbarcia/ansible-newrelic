@@ -1,3 +1,5 @@
+# {{ ansible_managed }}
+
 [newrelic]
 name=New Relic packages for Enterprise Linux - $basearch
 baseurl=http://yum.newrelic.com/pub/newrelic/el5/$basearch
