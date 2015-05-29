@@ -6,6 +6,11 @@ Drupsible role to manage the New Relic Server Agent (System Monitor Daemon) and 
 
 This role requires Ansible 1.4 higher and platforms listed in the metadata file.
 
+It needs to be run as root with something like become:yes in your playbook
+
+>  roles:
+>   - { role: drupsible-newrelic, tags: newrelic, become: yes }
+
 ## Role Variables
 
 The variables that can be passed to this role and a brief description about them are as follows

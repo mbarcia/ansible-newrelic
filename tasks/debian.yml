@@ -22,7 +22,6 @@
   apt:
     update_cache: yes
   when: newrelic_repo.changed
-  sudo: yes
 
 - name: Debian | Install New Relic Sysmond
   apt:
@@ -30,7 +29,6 @@
     update_cache: yes
     cache_valid_time: 86400
     state: latest
-  sudo: yes
   notify:
     - Restart New Relic
 
@@ -40,7 +38,6 @@
     update_cache: yes
     cache_valid_time: 86400
     state: latest
-  sudo: yes
   notify:
     - Restart New Relic
     
