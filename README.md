@@ -1,6 +1,6 @@
 # drupsible-newrelic
 
-This ansible role installs and configures the New Relic Server Agent (System Monitor Daemon) and the PHP monitor daemon.
+Drupsible role to manage the New Relic Server Agent (System Monitor Daemon) and the PHP monitor daemon.
 
 ## Requirements
 
@@ -73,4 +73,4 @@ The variables that can be passed to this role and a brief description about them
         - newrelic
 
 ## Credits
-Originally forked from https://github.com/sivel/ansible-newrelic
+Originally forked from https://github.com/sivel/ansible-newrelic.
