@@ -1,8 +1,7 @@
 ---
 galaxy_info:
-  author: Matt Martz
-  description: Install and configure the New Relic System Monitor Daemon
-  license: Apache License, Version 2.0
+  author: "Mariano Barcia"
+  license: 'GNU General Public License v3'
   min_ansible_version: 1.4
   platforms:
     - name: EL
