@@ -1,4 +1,7 @@
 ---
+# License key. Set to False to skip New Relic installation.
+newrelic_license_key: False
+
 newrelic_loglevel: info
 newrelic_logfile: /var/log/newrelic/nrsysmond.log
 newrelic_proxy: False

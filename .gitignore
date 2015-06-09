@@ -38,3 +38,4 @@ nosetests.xml
 # vim swap files
 *.swp
 /.settings/
+/.gitignore
