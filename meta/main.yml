@@ -13,9 +13,7 @@ galaxy_info:
         - all
     - name: Debian
       versions:
-        - lenny
-        - squeeze
-        - wheezy
+        - all
   categories:
     - monitoring
 dependencies: []
