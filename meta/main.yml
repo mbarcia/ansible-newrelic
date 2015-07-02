@@ -16,4 +16,19 @@ galaxy_info:
         - all
   categories:
     - monitoring
-dependencies: []
+
+dependencies:
+  - role: debops.apt
+    apt_keys: [
+      {
+        url: "https://download.newrelic.com/548C16BF.gpg",
+        id: "548C16BF",
+        state: "present"
+      }
+    ]
+    apt_repositories: [
+      {
+      repo: "deb http://apt.newrelic.com/debian/ newrelic non-free",
+      state: "present"
+      }
+    ]
