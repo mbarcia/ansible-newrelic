@@ -2,23 +2,25 @@
 galaxy_info:
   author: "Mariano Barcia"
   license: 'GNU General Public License v3'
-  min_ansible_version: 1.4
+  min_ansible_version: 1.8
   platforms:
-    - name: EL
-      versions:
-        - 5
-        - 6
     - name: Ubuntu
       versions:
-        - all
+        - trusty
+        - vivid
     - name: Debian
       versions:
-        - all
+        - wheezy
+        - jessie
   categories:
     - monitoring
 
 dependencies:
   - role: debops.apt
+    apt_base_packages: [ 'ed', 'python', 'python-apt', 'lsb-release', 'make', 'gnupg-curl',
+                     'git', 'wget', 'curl', 'rsync', 'netcat-openbsd', 'bridge-utils', 'vlan',
+                     'openssh-server', 'bsdutils', 'python-pycurl', 'python-httplib2',
+                     'apt-transport-https', 'acl', 'python-pip' ]
     apt_keys: [
       {
         url: "https://download.newrelic.com/548C16BF.gpg",
