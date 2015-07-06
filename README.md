@@ -1,10 +1,10 @@
 # drupsible-newrelic
 
-Drupsible role to manage the New Relic Server Agent (System Monitor Daemon) and the PHP monitor daemon.
+Drupsible role to manage the New Relic Server Agent (System Monitor Daemon) and the PHP agent.
 
 ## Requirements
 
-This role requires Ansible 1.4 higher and platforms listed in the metadata file.
+This role requires Ansible 1.8 or higher and platforms listed in the metadata file.
 
 It needs to be run as root with something like become:yes in your playbook
 
