@@ -188,7 +188,11 @@ docker_cacert={{ newrelic_pki_ca }}
 # Note   : Can also be set with the -b command line option.
 #
 #}
-ssl_ca_bundle={{ newrelic_ssl_ca_bundle|default(omit) }}
+{% if newrelic_ssl_ca_bundle is defined %}
+ssl_ca_bundle={{ newrelic_ssl_ca_bundle }}
+{% else %}
+#ssl_ca_bundle=
+{% endif %}
 
 {#
 #
