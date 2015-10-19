@@ -243,7 +243,11 @@ collector_host={{ newrelic_collector_host }}
 # Default: none
 #
 #}
+{% if newrelic_labels is defined %}
 labels={{ newrelic_labels }}
+{% else %}
+#labels=
+{% endif %}
 
 {#
 #

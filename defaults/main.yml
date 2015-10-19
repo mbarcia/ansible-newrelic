@@ -31,7 +31,6 @@ newrelic_pki_ca: 'CA.crt'
 
 newrelic_pidfile: '/var/run/newrelic/nrsysmond.pid'
 newrelic_collector_host: collector.newrelic.com
-newrelic_labels: ''
 newrelic_hostname: "{{ ansible_hostname }}"
 newrelic_ignore_reclaimable: "true"
 newrelic_disable_nfs: "false"
