@@ -2,12 +2,36 @@
 # License key. Set to False to skip New Relic installation.
 newrelic_license_key: False
 
-newrelic_loglevel: info
-newrelic_logfile: /var/log/newrelic/nrsysmond.log
+newrelic_loglevel: 'info'
+newrelic_logfile: '/var/log/newrelic/nrsysmond.log'
 newrelic_proxy: False
-newrelic_ssl: "false"
-newrelic_ssl_ca_bundle: False
-newrelic_ssl_ca_path: False
-newrelic_pidfile: /var/run/newrelic/nrsysmond.pid
+newrelic_ssl: "true"
+newrelic_ssl_ca_path: '/etc/ssl/certs'
+
+newrelic_disable_docker: "false"
+newrelic_docker_connection: '/var/run/docker.sock'
+# Enable or disable support for TLS in New Relic (using debops.pki)
+newrelic_pki: '{{ (True
+                  if (ansible_local|d() and ansible_local.pki|d() and
+                      ansible_local.pki.enabled|d() | bool)
+                  else False) | bool }}'
+
+# Base PKI directory
+newrelic_pki_path: '{% if (ansible_local is defined and ansible_local.pki is defined) %}{{ ansible_local.pki.base_path }}{% else %}/etc/pki{% endif %}'
+
+# Default PKI realm used by New Relic
+newrelic_pki_realm: '{% if (ansible_local is defined and ansible_local.pki is defined) %}{{ ansible_local.pki.realm }}{% else %}system{% endif %}'
+
+# Default certificate, relative to ``postfix_pki_realm`` variable
+newrelic_pki_crt: 'default.crt'
+
+# Default private key, relative to ``postfix_pki_realm`` variable
+newrelic_pki_key: 'default.key'
+newrelic_pki_ca: 'CA.crt'
+
+newrelic_pidfile: '/var/run/newrelic/nrsysmond.pid'
 newrelic_collector_host: collector.newrelic.com
-newrelic_timeout: 30
+newrelic_labels: ''
+newrelic_hostname: "{{ ansible_hostname }}"
+newrelic_ignore_reclaimable: "true"
+newrelic_disable_nfs: "false"

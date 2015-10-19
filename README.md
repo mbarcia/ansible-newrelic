@@ -1,6 +1,6 @@
 # drupsible-newrelic
 
-Drupsible role to manage the New Relic Server Agent (System Monitor Daemon) and the PHP agent.
+Drupsible role to manage the New Relic Server Agent (System Monitor Daemon) v2.2+. For a detailed configuration docs see [Configuring Servers for Linux](https://docs.newrelic.com/docs/servers/new-relic-servers-linux/installation-configuration/configuring-servers-linux)
 
 ## Requirements
 
@@ -27,24 +27,39 @@ The variables that can be passed to this role and a brief description about them
     # Proxy server. Default False
     newrelic_proxy: fred:secret@proxy.mydomain.com:8181
     
-    # Use SSL for all communication. Default False
+    # Use SSL for all communication. Default true
     newrelic_ssl: "true"
     
-    # SSL CA Bundle path. Default False
-    newrelic_ssl_ca_bundle: /etc/pki/tls/certs/ca-bundle.crt
+    # SSL CA Bundle path. Default omit
+    newrelic_ssl_ca_bundle: 
     
     # SSL CA Path. Default False
     newrelic_ssl_ca_path: /etc/ssl/certs
+
+    # Disable Docker. Default False
+    newrelic_disable_docker: "false"
     
-    # Pid file locaiton
+    # Docker connection. Default /var/run/docker.sock
+    newrelic_docker_connection: '/var/run/docker.sock'
+
+    # Pid file location
     newrelic_pidfile: /var/run/newrelic/nrsysmond.pid
     
     # Collector hostname
     newrelic_collector_host: collector.newrelic.com
-    
-    # Connection timeout for collector host
-    newrelic_timeout: 30
 
+    # New Relic labels. Default none
+    newrelic_labels: "Server:One;Data Center:Primary;"
+
+    # New Relic hostname. Default hostname
+    newrelic_hostname: "{{ ansible_hostname }}"
+
+    # Ignore reclaimable memory. Default True
+    newrelic_ignore_reclaimable: "true"
+
+    # Disable NFS. Default False
+    newrelic_disable_nfs: "false"
+    
 ## Examples
 
 ### Paramaterized Role
