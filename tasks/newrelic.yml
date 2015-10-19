@@ -6,7 +6,7 @@
     cache_valid_time: 86400
     state: latest
   notify:
-    - Restart New Relic
+    - Restart New Relic sysmond
 
 - name: Configure New Relic Sysmond
   template:
@@ -16,4 +16,4 @@
     owner: root
     mode: 0640
   notify:
-    - Restart New Relic
+    - Restart New Relic sysmond
