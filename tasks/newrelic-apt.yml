@@ -1,0 +1,20 @@
+---
+- name: Add New Relic APT key
+  apt_key:
+    url: 'https://download.newrelic.com/548C16BF.gpg'
+    id: 548C16BF
+    state: present
+
+- name: Add New Relic APT repository
+  apt_repository: 
+    repo: 'deb http://apt.newrelic.com/debian/ newrelic non-free' 
+    state: present
+
+- name: Install New Relic SysMonD
+  apt:
+    pkg: newrelic-sysmond
+    update_cache: yes
+    cache_valid_time: 86400
+    state: latest
+  notify:
+    - Restart New Relic sysmond

@@ -1,3 +1,6 @@
 ---
-- include: newrelic.yml
-  when: newrelic_license_key is defined and newrelic_license_key != False
+- include: newrelic-apt.yml
+  when: provision_new_relic|default(False)|bool and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+
+- include: newrelic-sysmond.yml
+  when: newrelic_license_key is defined and newrelic_license_key != False 

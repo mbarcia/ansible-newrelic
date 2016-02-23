@@ -1,13 +1,4 @@
 ---
-- name: Install New Relic Sysmond
-  apt:
-    pkg: newrelic-sysmond
-    update_cache: yes
-    cache_valid_time: 86400
-    state: latest
-  notify:
-    - Restart New Relic sysmond
-
 - name: Configure New Relic Sysmond
   template:
     src: nrsysmond.cfg.j2
