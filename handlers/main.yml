@@ -1,4 +1,11 @@
 ---
+# handlers file for drupsible.newrelic
+- name: Restart php5-fpm
+  service: 
+    name: php5-fpm 
+    state: restarted
+  ignore_errors: True
+
 - name: Restart New Relic sysmond
   service:
     name: newrelic-sysmond

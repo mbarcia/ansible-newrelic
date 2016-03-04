@@ -2,5 +2,24 @@
 - include: newrelic-apt.yml
   when: provision_new_relic|default(False)|bool and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
 
+- name: Install New Relic SysMonD
+  package:
+    name: newrelic-sysmond
+    state: latest
+  notify:
+    - Restart New Relic sysmond
+
 - include: newrelic-sysmond.yml
   when: newrelic_license_key is defined and newrelic_license_key != False 
+
+- name: Is PHP-FPM installed?
+  stat:
+    path: '/etc/php5/fpm/php.ini'
+  register: php_fpm_ini 
+
+- name: Install php-newrelic if PHP-FPM is installed
+  package: 
+    name: php5-newrelic
+    state: latest
+  when: php_fpm_ini.stat.exists
+  notify: 'Restart php5-fpm'

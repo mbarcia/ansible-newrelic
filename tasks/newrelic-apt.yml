@@ -9,12 +9,4 @@
   apt_repository: 
     repo: 'deb http://apt.newrelic.com/debian/ newrelic non-free' 
     state: present
-
-- name: Install New Relic SysMonD
-  apt:
-    pkg: newrelic-sysmond
     update_cache: yes
-    cache_valid_time: 86400
-    state: latest
-  notify:
-    - Restart New Relic sysmond
