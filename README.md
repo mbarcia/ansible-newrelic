@@ -1,17 +1,31 @@
-# drupsible-newrelic
+drupsible-newrelic
+==================
 
-Drupsible role to manage the New Relic Server Agent (System Monitor Daemon) v2.2+. For a detailed configuration docs see [Configuring Servers for Linux](https://docs.newrelic.com/docs/servers/new-relic-servers-linux/installation-configuration/configuring-servers-linux)
+Drupsible role to manage the New Relic Server Agent (System Monitor Daemon) v2.2+. For a detailed configuration docs see [Configuring Servers for Linux](https://docs.newrelic.com/docs/servers/new-relic-servers-linux/installation-configuration/configuring-servers-linux).
 
-## Requirements
+If PHP-FPM is installed, this role will also install the [New Relic PHP agent](https://docs.newrelic.com/docs/agents/php-agent/getting-started/new-relic-php).
 
-This role requires Ansible 1.8 or higher and platforms listed in the metadata file.
+If debops.pki is installed, this role is able to setup TLS in LSM for connecting to Docker API.
 
-It needs to be run as root with something like become:yes in your playbook
+Requirements
+------------
 
->  roles:
->   - { role: drupsible-newrelic, tags: newrelic, become: yes }
+This role DOES NOT require PHP5 FPM (Fast Process Manager) to be present. But if it is, it will install New Relic's PHP agent.
 
-## Role Variables
+This role DOES NOT require DebOps PKI (Private Key Infrastructure) to be present. But if it is, it will provide certificates to setup TLS in LSM's connection to Docker.
+
+This role can be used indepedently and does NOT require Drupsible to run.
+
+Example playbook
+----------------
+
+```
+roles:
+- { role: drupsible-newrelic, tags: [ role::newrelic ], become: yes }
+```
+
+Role Variables
+--------------
 
 The variables that can be passed to this role and a brief description about them are as follows
 
@@ -60,37 +74,17 @@ The variables that can be passed to this role and a brief description about them
     # Disable NFS. Default False
     newrelic_disable_nfs: "false"
     
-## Examples
+License
+-------
 
-### Paramaterized Role
+GNU General Public License v3
 
-    ---
-    - hosts: all
-      roles:
-        - { role: newrelic, newrelic_license_key: ab2fa361cd4d0d373833cad619d7bcc424d27c16 }
+Author Information
+------------------
 
-### Vars
+Mariano Barcia - [https://github.com/mbarcia](https://github.com/mbarcia)
 
-    ---
-    - hosts: all
-      vars:
-        newrelic_license_key: ab2fa361cd4d0d373833cad619d7bcc424d27c16
-      roles:
-        - newrelic
+Credits
+-------
 
-### Group vars
-
-#### group_vars/production
-
-    ---
-    newrelic_license_key: ab2fa361cd4d0d373833cad619d7bcc424d27c16
-
-#### site.yml
-
-    ---
-    - hosts: all
-      roles:
-        - newrelic
-
-## Credits
 Originally forked from https://github.com/sivel/ansible-newrelic.
