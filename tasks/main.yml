@@ -19,7 +19,7 @@
 
 - name: Install php-newrelic if PHP-FPM is installed
   package: 
-    name: php5-newrelic
+    name: newrelic-php5
     state: latest
   when: php_fpm_ini.stat.exists
   notify: 'Restart php5-fpm'
