@@ -10,7 +10,7 @@
     - Restart New Relic sysmond
 
 - include: newrelic-sysmond.yml
-  when: newrelic_license_key is defined and newrelic_license_key != False 
+  when: newrelic_license_key|default(False) != False 
 
 - name: Is PHP-FPM installed?
   stat:
