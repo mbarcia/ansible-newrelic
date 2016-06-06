@@ -10,7 +10,7 @@ If debops.pki is installed, this role is able to setup TLS in LSM for connecting
 Requirements
 ------------
 
-This role DOES NOT require PHP5 FPM (Fast Process Manager) to be present. But if it is, it will install New Relic's PHP agent.
+This role DOES NOT require PHP-FPM (Fast Process Manager) to be present. But if it is, it will install New Relic's PHP agent (both PHP5 and PHP7 are supported).
 
 This role DOES NOT require DebOps PKI (Private Key Infrastructure) to be present. But if it is, it will provide certificates to setup TLS in LSM's connection to Docker.
 
@@ -31,34 +31,34 @@ The variables that can be passed to this role and a brief description about them
 
     # License key
     newrelic_license_key: ab2fa361cd4d0d373833cad619d7bcc424d27c16
-    
+
     # Log level (error, warning, info, verbose, debug, verbosedebug)
     newrelic_loglevel: info
-    
+
     # Log file location
     newrelic_logfile: /var/log/newrelic/nrsysmond.log
-    
+
     # Proxy server. Default False
     newrelic_proxy: fred:secret@proxy.mydomain.com:8181
-    
+
     # Use SSL for all communication. Default true
     newrelic_ssl: "true"
-    
+
     # SSL CA Bundle path. Default omit
-    newrelic_ssl_ca_bundle: 
-    
+    newrelic_ssl_ca_bundle:
+
     # SSL CA Path. Default False
     newrelic_ssl_ca_path: /etc/ssl/certs
 
     # Disable Docker. Default False
     newrelic_disable_docker: "false"
-    
+
     # Docker connection. Default /var/run/docker.sock
     newrelic_docker_connection: '/var/run/docker.sock'
 
     # Pid file location
     newrelic_pidfile: /var/run/newrelic/nrsysmond.pid
-    
+
     # Collector hostname
     newrelic_collector_host: collector.newrelic.com
 
@@ -73,7 +73,7 @@ The variables that can be passed to this role and a brief description about them
 
     # Disable NFS. Default False
     newrelic_disable_nfs: "false"
-    
+
 License
 -------
 
