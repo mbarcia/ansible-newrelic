@@ -7,7 +7,7 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - trusty
-        - vivid
+        - xenial
     - name: Debian
       versions:
         - wheezy

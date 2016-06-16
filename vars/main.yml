@@ -1,0 +1,4 @@
+---
+newrelic_php_version_default: "{{ (ansible_distribution_release == 'xenial')|ternary('7.0', '5' ) }}"
+newrelic_php_version: "{{ ansible_local.php.version|default(newrelic_php_version_default) }}"
+newrelic_php_etc_base: "{{ (ansible_distribution_release == 'xenial')|ternary('/etc/php/' + newrelic_php_version, '/etc/php5') }}"

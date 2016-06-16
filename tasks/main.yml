@@ -10,18 +10,18 @@
     - Restart New Relic sysmond
 
 - include: newrelic-sysmond.yml
-  when: newrelic_license_key|default(False) != False 
+  when: newrelic_license_key|default(False) != False
   notify:
     - Restart New Relic sysmond
 
 - name: Is PHP-FPM installed?
   stat:
-    path: '/etc/php5/fpm/php.ini'
-  register: php_fpm_ini 
+    path: '{{ newrelic_php_etc_base }}/fpm/php.ini'
+  register: php_fpm_ini
 
-- name: Install newrelic-php5 if PHP-FPM is installed
-  package: 
-    name: newrelic-php5
+- name: Install PHP Agent if PHP-FPM is installed
+  package:
+    name: "newrelic-php5"
     state: latest
   when: php_fpm_ini.stat.exists
-  notify: 'Restart php5-fpm'
+  notify: 'Restart php-fpm'
