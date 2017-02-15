@@ -1,6 +1,7 @@
 ---
 - include: newrelic-apt.yml
   when: provision_new_relic|default(False)|bool and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+  tags: [ provision ]
 
 - name: Install New Relic SysMonD
   package:
@@ -8,6 +9,7 @@
     state: latest
   notify:
     - Restart New Relic sysmond
+  tags: [ provision ]
 
 - include: newrelic-sysmond.yml
   when: newrelic_license_key|default(False) != False
