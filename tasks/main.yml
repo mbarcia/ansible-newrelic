@@ -7,6 +7,7 @@
   package:
     name: newrelic-sysmond
     state: latest
+    use: apt
   notify:
     - Restart New Relic sysmond
   tags: [ provision ]
@@ -25,5 +26,6 @@
   package:
     name: "newrelic-php5"
     state: latest
+    use: apt
   when: php_fpm_ini.stat.exists
   notify: 'Restart php-fpm'
