@@ -66,7 +66,7 @@ The variables that can be passed to this role and a brief description about them
     newrelic_labels: "Server:One;Data Center:Primary;"
 
     # New Relic hostname. Default hostname
-    newrelic_hostname: "{{ ansible_hostname }}"
+    newrelic_hostname: "{{ ansible_hostname|d(inventory_hostname) }}"
 
     # Ignore reclaimable memory. Default True
     newrelic_ignore_reclaimable: "true"
